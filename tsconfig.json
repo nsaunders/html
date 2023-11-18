@@ -4,9 +4,7 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "bundler",
-    "baseUrl": ".",
-    "outDir": ".",
     "noEmit": true
   },
-  "include": ["src"]
+  "include": ["index.ts", "jsx-runtime.ts"]
 }

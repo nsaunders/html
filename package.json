@@ -12,9 +12,9 @@
     "jsx-runtime.js"
   ],
   "scripts": {
-    "clean": "rimraf global.d.ts index.d.ts jsx-runtime.d.ts index.js jsx-runtime.js",
+    "clean": "rimraf index.d.ts jsx-runtime.d.ts index.js jsx-runtime.js",
     "lint": "eslint",
-    "prepublishOnly": "tsc --noEmit false --declaration && copy-file src/global.d.ts ./global.d.ts",
+    "prepublishOnly": "tsc --noEmit false --declaration",
     "test": "echo \"You should add some tests.\""
   },
   "repository": {
@@ -40,7 +40,6 @@
     "conventional-changelog-cli": "^4.1.0",
     "conventional-github-releaser": "^3.1.5",
     "conventional-recommended-bump": "^9.0.0",
-    "copy-file-util": "^1.1.2",
     "rimraf": "^5.0.5",
     "typescript": "^5.2.2"
   },
