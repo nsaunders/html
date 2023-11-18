@@ -5,6 +5,8 @@ declare namespace JSX {
 
   type Fragment = { _tag: "fragment"; value: string };
 
+  type Node = JSX.Element | string | number | boolean | null | undefined;
+
   // Sources:
   // - https://github.com/nicojs/typed-html/tree/88a6a6219bbf4d9368537ee29419d29671573093/src/jsx
   // - https://github.com/kitajs/html/blob/16bd27e45ee6a7da62e95b165a4ee430a77f7ac9/jsx.d.ts
@@ -27,7 +29,7 @@ declare namespace JSX {
     bdo: HtmlTag;
     blockquote: HtmlQuoteTag;
     body: HtmlBodyTag;
-    br: HtmlTag;
+    br: VoidHtmlTag;
     button: HtmlButtonTag;
     canvas: HtmlCanvasTag;
     caption: HtmlTag;
@@ -94,7 +96,7 @@ declare namespace JSX {
     head: HtmlTag;
     header: HtmlTag;
     hgroup: HtmlTag;
-    hr: HtmlTag;
+    hr: VoidHtmlTag;
     html: HtmlHtmlTag;
     i: HtmlTag;
     iframe: HtmlIFrameTag;
@@ -183,10 +185,10 @@ declare namespace JSX {
     var: HtmlTag;
     video: HtmlVideoTag;
     view: HtmlSvgTag;
-    wbr: HtmlTag;
+    wbr: VoidHtmlTag;
   }
 
-  interface HtmlTag extends Htmx.Attributes {
+  interface VoidHtmlTag extends Htmx.Attributes {
     accesskey?: string;
     class?: string;
     contenteditable?: string;
@@ -203,6 +205,10 @@ declare namespace JSX {
     translate?: string | boolean;
   }
 
+  interface HtmlTag extends VoidHtmlTag {
+    children?: Node | Node[];
+  }
+
   interface HtmlAnchorTag extends HtmlTag {
     href?: string;
     target?: string;
@@ -214,7 +220,7 @@ declare namespace JSX {
     type?: string;
   }
 
-  interface HtmlAreaTag extends HtmlTag {
+  interface HtmlAreaTag extends VoidHtmlTag {
     alt?: string;
     coords?: string;
     shape?: string;
@@ -235,7 +241,7 @@ declare namespace JSX {
     controls?: string;
   }
 
-  interface BaseTag extends HtmlTag {
+  interface BaseTag extends VoidHtmlTag {
     href?: string;
     target?: string;
   }
@@ -267,7 +273,7 @@ declare namespace JSX {
     height?: string;
   }
 
-  interface HtmlTableColTag extends HtmlTag {
+  interface HtmlTableColTag extends VoidHtmlTag {
     span?: string;
   }
 
@@ -279,7 +285,7 @@ declare namespace JSX {
     value?: string;
   }
 
-  interface HtmlEmbedTag extends HtmlTag {
+  interface HtmlEmbedTag extends VoidHtmlTag {
     src?: string;
     type?: string;
     width?: string;
@@ -317,7 +323,7 @@ declare namespace JSX {
     height?: string;
   }
 
-  interface HtmlImageTag extends HtmlTag {
+  interface HtmlImageTag extends VoidHtmlTag {
     alt?: string;
     src?: string;
     crossorigin?: string;
@@ -327,7 +333,7 @@ declare namespace JSX {
     height?: string;
   }
 
-  interface HtmlInputTag extends HtmlTag {
+  interface HtmlInputTag extends VoidHtmlTag {
     accept?: string;
     action?: string;
     alt?: string;
@@ -364,7 +370,7 @@ declare namespace JSX {
     datetime?: string | Date;
   }
 
-  interface KeygenTag extends HtmlTag {
+  interface KeygenTag extends VoidHtmlTag {
     autofocus?: string;
     challenge?: string;
     disabled?: string;
@@ -382,7 +388,7 @@ declare namespace JSX {
     value?: string | number;
   }
 
-  interface HtmlLinkTag extends HtmlTag {
+  interface HtmlLinkTag extends VoidHtmlTag {
     href?: string;
     crossorigin?: string;
     rel?: string;
@@ -397,7 +403,7 @@ declare namespace JSX {
     name?: string;
   }
 
-  interface HtmlMetaTag extends HtmlTag {
+  interface HtmlMetaTag extends VoidHtmlTag {
     name?: string;
     httpEquiv?: string;
     content?: string;
@@ -446,7 +452,7 @@ declare namespace JSX {
     name?: string;
   }
 
-  interface HtmlParamTag extends HtmlTag {
+  interface HtmlParamTag extends VoidHtmlTag {
     name?: string;
     value?: string;
   }
@@ -456,7 +462,7 @@ declare namespace JSX {
     max?: string | number;
   }
 
-  interface HtmlCommandTag extends HtmlTag {
+  interface HtmlCommandTag extends VoidHtmlTag {
     type?: string;
     label?: string;
     icon?: string;
@@ -502,7 +508,7 @@ declare namespace JSX {
     size?: string;
   }
 
-  interface HtmlSourceTag extends HtmlTag {
+  interface HtmlSourceTag extends VoidHtmlTag {
     src?: string;
     type?: string;
     media?: string;
@@ -550,7 +556,7 @@ declare namespace JSX {
     datetime?: string | Date;
   }
 
-  interface HtmlTrackTag extends HtmlTag {
+  interface HtmlTrackTag extends VoidHtmlTag {
     default?: string;
     kind?: string;
     label?: string;

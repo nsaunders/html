@@ -6,5 +6,5 @@
     "moduleResolution": "bundler",
     "noEmit": true
   },
-  "include": ["index.ts", "jsx-runtime.ts"]
+  "include": ["global.d.ts", "index.ts", "jsx-runtime.ts"]
 }

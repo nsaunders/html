@@ -1,5 +1,3 @@
-export type Element = JSX.Element;
-
 // Source: https://github.com/kitajs/html/blob/af39cb1ad11036d5704bee7c318417feb802c777/index.js
 function isVoid(tag: string) {
   return (
@@ -31,7 +29,7 @@ function escape(s: string) {
     .replace(/'/g, "&#39;");
 }
 
-function isFragment(x: unknown): x is Element {
+function isFragment(x: unknown): x is JSX.Fragment {
   if (!x) {
     return false;
   }
@@ -44,7 +42,7 @@ function isFragment(x: unknown): x is Element {
   return x._tag === "fragment";
 }
 
-function isElement(x: unknown): x is Element {
+function isElement(x: unknown): x is JSX.Element {
   if (!x) {
     return false;
   }
@@ -57,9 +55,7 @@ function isElement(x: unknown): x is Element {
   return x._tag === "element";
 }
 
-type Node = Element | Element[] | string | number | boolean | null | undefined;
-
-function renderNode(node: Node): string {
+function renderNode(node: JSX.Node) {
   if (node === null || node === undefined) {
     return "";
   }
@@ -78,7 +74,7 @@ function renderNode(node: Node): string {
   }
 }
 
-function renderNodes(node?: Node | Node[]) {
+function renderNodes(node?: JSX.Node | JSX.Node[]) {
   return (node instanceof Array ? node : [node]).map(renderNode).join("");
 }
 
@@ -133,7 +129,7 @@ function renderAttributes(attrs: Record<string, unknown>): string {
 export function Fragment({
   children,
 }: {
-  children?: Node | Node[];
+  children?: JSX.Node | JSX.Node[];
 }): JSX.Fragment {
   return { _tag: "fragment", value: renderNodes(children) };
 }
@@ -144,7 +140,7 @@ export function jsx(
     children,
     ...restProps
   }: {
-    children?: Node | Node[];
+    children?: JSX.Node | JSX.Node[];
   },
 ): JSX.Element {
   if (typeof tag === "string") {
