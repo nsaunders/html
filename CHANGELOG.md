@@ -1,3 +1,10 @@
+## [0.0.5](https://github.com/nsaunders/html/compare/v0.0.4...v0.0.5) (2023-11-18)
+
+
+### Bug Fixes
+
+* intrinsic element children ([30d058b](https://github.com/nsaunders/html/commit/30d058b82b565e80d937f3f144e742e8a4954329))
+
 ## [0.0.4](https://github.com/nsaunders/html/compare/v0.0.3...v0.0.4) (2023-11-18)
 
 
