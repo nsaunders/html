@@ -1,3 +1,10 @@
+## [0.0.3](https://github.com/nsaunders/html/compare/v0.0.2...v0.0.3) (2023-11-18)
+
+
+### Bug Fixes
+
+* typescript globals ([c2dfaa3](https://github.com/nsaunders/html/commit/c2dfaa3e6925abd60f18fd45698bdd95c52a561e))
+
 ## [0.0.2](https://github.com/nsaunders/html/compare/v0.0.1...v0.0.2) (2023-11-18)
 
 
