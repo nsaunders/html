@@ -1,0 +1,46 @@
+{
+  "name": "@nsaunders/html",
+  "private": false,
+  "type": "commonjs",
+  "version": "0.0.0",
+  "description": "Opinionated JSX types and renderer",
+  "module": "dist",
+  "types": "dist",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "prepublishOnly": "tsc",
+    "test": "echo \"You should add some tests.\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nsaunders/html.git"
+  },
+  "keywords": [
+    "typescript",
+    "jsx",
+    "html",
+    "htmx"
+  ],
+  "author": "Nick Saunders",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nsaunders/html/issues"
+  },
+  "homepage": "https://github.com/nsaunders/html",
+  "devDependencies": {
+    "@tsconfig/strictest": "^2.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "conventional-changelog-cli": "^4.1.0",
+    "conventional-github-releaser": "^3.1.5",
+    "conventional-recommended-bump": "^9.0.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "csstype": "^3.1.2"
+  }
+}

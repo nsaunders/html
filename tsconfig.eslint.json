@@ -1,0 +1,8 @@
+{
+  "extends": "@tsconfig/strictest",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [".eslintrc.js", "commitlint.config.js", "src"],
+  "exclude": ["dist"]
+}

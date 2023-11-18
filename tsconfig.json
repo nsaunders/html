@@ -1,0 +1,12 @@
+{
+  "extends": "@tsconfig/strictest",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "outDir": "dist",
+    "declaration": true
+  },
+  "include": ["src"]
+}
