@@ -5,7 +5,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "baseUrl": ".",
-    "outDir": "dist",
+    "outDir": ".",
     "noEmit": true
   },
   "include": ["src"]
