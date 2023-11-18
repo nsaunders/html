@@ -1,3 +1,11 @@
+## [0.0.4](https://github.com/nsaunders/html/compare/v0.0.3...v0.0.4) (2023-11-18)
+
+
+### Bug Fixes
+
+* fix typescript outdir ([c0b3083](https://github.com/nsaunders/html/commit/c0b30834515e7ce86a97a44201cc1b8b0c2b2a58))
+* typescript source directory ([5721b99](https://github.com/nsaunders/html/commit/5721b99e9a9d65aa5a3853c18f3a975f36bb1847))
+
 ## [0.0.3](https://github.com/nsaunders/html/compare/v0.0.2...v0.0.3) (2023-11-18)
 
 
