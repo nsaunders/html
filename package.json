@@ -4,15 +4,17 @@
   "type": "commonjs",
   "version": "0.0.2",
   "description": "Opinionated JSX types and renderer",
-  "module": "dist",
-  "types": "dist",
   "files": [
-    "dist"
+    "global.d.ts",
+    "index.d.ts",
+    "jsx-runtime.d.ts",
+    "index.js",
+    "jsx-runtime.js"
   ],
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf global.d.ts index.d.ts jsx-runtime.d.ts index.js jsx-runtime.js",
     "lint": "eslint",
-    "prepublishOnly": "tsc && copy-file src/index.d.ts dist/index.d.ts",
+    "prepublishOnly": "tsc --noEmit false --declaration && copy-file src/global.d.ts ./global.d.ts",
     "test": "echo \"You should add some tests.\""
   },
   "repository": {
