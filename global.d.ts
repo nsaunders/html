@@ -269,7 +269,7 @@ declare namespace JSX {
   interface HtmlButtonTag extends HtmlTag {
     action?: string;
     autofocus?: string;
-    disabled?: string;
+    disabled?: boolean;
     enctype?: string;
     form?: string;
     method?: string;
@@ -307,7 +307,7 @@ declare namespace JSX {
   }
 
   interface HtmlFieldSetTag extends HtmlTag {
-    disabled?: string;
+    disabled?: boolean;
     form?: string;
     name?: string;
   }
@@ -408,7 +408,7 @@ declare namespace JSX {
   interface KeygenTag extends VoidHtmlTag {
     autofocus?: string;
     challenge?: string;
-    disabled?: string;
+    disabled?: boolean;
     form?: string;
     keytype?: string;
     name?: string;
@@ -470,14 +470,14 @@ declare namespace JSX {
   }
 
   interface HtmlOptgroupTag extends HtmlTag {
-    disabled?: string;
+    disabled?: boolean;
     label?: string;
   }
 
   interface HtmlOptionTag extends HtmlTag {
-    disabled?: string;
+    disabled?: boolean;
     label?: string;
-    selected?: string;
+    selected?: boolean;
     value?: string;
   }
 
@@ -501,10 +501,10 @@ declare namespace JSX {
     type?: string;
     label?: string;
     icon?: string;
-    disabled?: string;
-    checked?: string;
+    disabled?: boolean;
+    checked?: boolean;
     radiogroup?: string;
-    default?: string;
+    default?: boolean;
   }
 
   interface HtmlLegendTag extends HtmlTag {}
@@ -530,16 +530,16 @@ declare namespace JSX {
   }
 
   interface HtmlDetailsTag extends HtmlTag {
-    open?: string;
+    open?: boolean;
   }
 
   interface HtmlSelectTag extends HtmlTag {
-    autofocus?: string;
-    disabled?: string;
+    autofocus?: boolean;
+    disabled?: boolean;
     form?: string;
-    multiple?: string;
+    multiple?: boolean;
     name?: string;
-    required?: string;
+    required?: boolean;
     size?: string;
   }
 
@@ -552,8 +552,8 @@ declare namespace JSX {
   interface HtmlStyleTag extends HtmlTag {
     media?: string;
     type?: string;
-    disabled?: string;
-    scoped?: string;
+    disabled?: boolean;
+    scoped?: boolean;
   }
 
   interface HtmlTableTag extends HtmlTag {}
@@ -565,17 +565,17 @@ declare namespace JSX {
   }
 
   interface HtmlTextAreaTag extends HtmlTag {
-    autofocus?: string;
+    autofocus?: boolean;
     cols?: string;
     dirname?: string;
-    disabled?: string;
+    disabled?: boolean;
     form?: string;
     maxlength?: string;
     minlength?: string;
     name?: string;
     placeholder?: string;
-    readonly?: string;
-    required?: string;
+    readonly?: boolean;
+    required?: boolean;
     rows?: string;
     wrap?: string;
   }
@@ -592,7 +592,7 @@ declare namespace JSX {
   }
 
   interface HtmlTrackTag extends VoidHtmlTag {
-    default?: string;
+    default?: boolean;
     kind?: string;
     label?: string;
     src?: string;
