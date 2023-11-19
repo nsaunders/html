@@ -1,3 +1,10 @@
+## [0.1.2](https://github.com/nsaunders/html/compare/v0.1.1...v0.1.2) (2023-11-19)
+
+
+### Bug Fixes
+
+* react-jsx handles children differently ([bc5bf5f](https://github.com/nsaunders/html/commit/bc5bf5fdb2a6f47e3871dac84394a74a3fa4375d))
+
 ## [0.1.1](https://github.com/nsaunders/html/compare/v0.1.0...v0.1.1) (2023-11-19)
 
 
