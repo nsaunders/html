@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/nsaunders/html/compare/v0.1.0...v0.1.1) (2023-11-19)
+
+
+### Bug Fixes
+
+* arbitrary component children ([ca0c463](https://github.com/nsaunders/html/commit/ca0c463f786fae74e47a1b227d58f9dfd2caa28f))
+
 ## [0.1.0](https://github.com/nsaunders/html/compare/v0.0.5...v0.1.0) (2023-11-19)
 
 
