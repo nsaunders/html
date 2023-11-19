@@ -15,9 +15,9 @@
   "scripts": {
     "clean": "rimraf index.d.ts jsx-runtime.d.ts index.js jsx-runtime.js test.d.ts test.js",
     "lint": "eslint",
-    "prepublishOnly": "tsc --noEmit false --declaration",
-    "test": "tsc --noEmit false --moduleResolution node && node ./test.js",
-    "test-watch": "tsc-watch --noEmit false --moduleResolution node --onSuccess \"node ./test.js\""
+    "prepublishOnly": "tsc --project tsconfig.dist.json",
+    "test": "tsc --noEmit false && node ./test.js",
+    "test-watch": "tsc-watch --noEmit false --onSuccess \"node ./test.js\""
   },
   "repository": {
     "type": "git",

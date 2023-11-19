@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/strictest",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "declaration": true
+  },
+  "include": ["index.ts", "jsx-runtime.ts"]
+}
