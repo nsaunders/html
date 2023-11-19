@@ -1,3 +1,12 @@
+## [0.1.3](https://github.com/nsaunders/html/compare/v0.1.2...v0.1.3) (2023-11-19)
+
+
+### Bug Fixes
+
+* corrected boolean attribute types ([1f7ecb2](https://github.com/nsaunders/html/commit/1f7ecb2d32ea573c030050aa578cb479d51de73f))
+* nested nodes ([1ab87f9](https://github.com/nsaunders/html/commit/1ab87f9738fcff5c089c40d8a47ac92272d7cc2f))
+* numeric attribute typings ([d683b4c](https://github.com/nsaunders/html/commit/d683b4c276754b77df7df25dc4a4dfc632e0822b))
+
 ## [0.1.2](https://github.com/nsaunders/html/compare/v0.1.1...v0.1.2) (2023-11-19)
 
 
