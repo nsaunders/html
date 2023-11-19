@@ -1,3 +1,10 @@
+## [0.1.0](https://github.com/nsaunders/html/compare/v0.0.5...v0.1.0) (2023-11-19)
+
+
+### Features
+
+* dangerously set inner html ([3bc4ab1](https://github.com/nsaunders/html/commit/3bc4ab1c7cee9130f635eee74ac3c558ba4619f8))
+
 ## [0.0.5](https://github.com/nsaunders/html/compare/v0.0.4...v0.0.5) (2023-11-18)
 
 
