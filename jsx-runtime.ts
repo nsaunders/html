@@ -71,8 +71,19 @@ function isNode(x: unknown): x is JSX.Node {
   }
 }
 
-function isNodeOrNodes(x: unknown): x is JSX.Node | JSX.Node[] {
-  return isNode(x) || (x instanceof Array && !x.some(xx => !isNode(xx)));
+function isNodes(x: unknown): x is JSX.Nodes {
+  if (isNode(x)) {
+    return true;
+  }
+  if (!(x instanceof Array)) {
+    return false;
+  }
+  for (const item of x) {
+    if (!isNodes(item)) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function renderNode(node: JSX.Node) {
@@ -94,8 +105,18 @@ function renderNode(node: JSX.Node) {
   }
 }
 
-function renderNodes(node?: JSX.Node | JSX.Node[]) {
-  return (node instanceof Array ? node : [node]).map(renderNode).join("");
+function flattenNodes(node?: JSX.Nodes): JSX.Node[] {
+  if (node instanceof Array) {
+    return node.reduce(
+      (nodes: JSX.Node[], node: JSX.Nodes) => nodes.concat(flattenNodes(node)),
+      [],
+    );
+  }
+  return [node];
+}
+
+function renderNodes(nodes?: JSX.Nodes) {
+  return flattenNodes(nodes).map(renderNode).join("");
 }
 
 function camelToKebab(x: string): string {
@@ -159,7 +180,7 @@ export function jsx(
   props: Record<string, unknown>,
 ): JSX.Element | JSX.Fragment {
   if (tag === jsx) {
-    if (props && "children" in props && isNodeOrNodes(props["children"])) {
+    if (props && "children" in props && isNodes(props["children"])) {
       return { _tag: "fragment", value: renderNodes(props["children"] || []) };
     }
     return { _tag: "fragment", value: "" };
@@ -183,9 +204,7 @@ export function jsx(
             typeof props["dangerouslySetInnerHTML"]["__html"] === "string"
               ? props["dangerouslySetInnerHTML"]["__html"]
               : renderNodes(
-                  props &&
-                    "children" in props &&
-                    isNodeOrNodes(props["children"])
+                  props && "children" in props && isNodes(props["children"])
                     ? props["children"]
                     : [],
                 )

@@ -4,16 +4,8 @@ import { render } from "./index.js";
 // Basic
 assert.strictEqual(render(<div />), "<div></div>");
 
-// Multiple children
-assert.strictEqual(
-  render(
-    <div>
-      <span>Child 1</span>
-      <span>Child 2</span>
-    </div>,
-  ),
-  "<div><span>Child 1</span><span>Child 2</span></div>",
-);
+// Void element
+assert.strictEqual(render(<input type="text" />), '<input type="text">');
 
 // Fragment
 assert.strictEqual(
@@ -24,15 +16,6 @@ assert.strictEqual(
     </>,
   ),
   "<span>Child 1</span><span>Child 2</span>",
-);
-
-// Void element
-assert.strictEqual(render(<input type="text" />), '<input type="text">');
-
-// dangerouslySetInnerHTML
-assert.strictEqual(
-  render(<div dangerouslySetInnerHTML={{ __html: 'It "works"!' }} />),
-  '<div>It "works"!</div>',
 );
 
 // String attributes
@@ -61,6 +44,51 @@ assert.strictEqual(
     />,
   ),
   '<div style="background-color:black;line-height:1.5;color:white"></div>',
+);
+
+// dangerouslySetInnerHTML
+assert.strictEqual(
+  render(<div dangerouslySetInnerHTML={{ __html: 'It "works"!' }} />),
+  '<div>It "works"!</div>',
+);
+
+// Multiple children
+assert.strictEqual(
+  render(
+    <div>
+      <span>Child 1</span>
+      <span>Child 2</span>
+    </div>,
+  ),
+  "<div><span>Child 1</span><span>Child 2</span></div>",
+);
+
+// Mixed children
+assert.strictEqual(
+  render(
+    <div>
+      <div>Child 0</div>
+      {[1, 2].map(i => (
+        <div>Child {i}</div>
+      ))}
+    </div>,
+  ),
+  "<div><div>Child 0</div><div>Child 1</div><div>Child 2</div></div>",
+);
+
+// Mixed fragment children
+assert.strictEqual(
+  render(
+    <div>
+      <>
+        <div>Child 0</div>
+        {[1, 2].map(i => (
+          <div>Child {i}</div>
+        ))}
+      </>
+    </div>,
+  ),
+  "<div><div>Child 0</div><div>Child 1</div><div>Child 2</div></div>",
 );
 
 // Component with node props
@@ -136,15 +164,6 @@ assert.strictEqual(
     </PostListItem>,
   ),
   "<div><span>Count lines of code as &quot;lines spent&quot;</span><span>Edsger W. Dijkstra</span></div>",
-);
-
-assert.strictEqual(
-  render(
-    <a>
-      <b>testing</b>
-    </a>,
-  ),
-  "<a><b>testing</b></a>",
 );
 
 console.info("All tests passed.");

@@ -14,6 +14,8 @@ declare namespace JSX {
     | null
     | undefined;
 
+  type Nodes = Node | Nodes[];
+
   interface ElementChildrenAttribute {
     children?: unknown;
   }
@@ -217,7 +219,7 @@ declare namespace JSX {
   }
 
   interface HtmlTag extends VoidHtmlTag {
-    children?: Node | Node[];
+    children?: Nodes;
     dangerouslySetInnerHTML?: { __html: string };
   }
 
