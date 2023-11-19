@@ -5,7 +5,14 @@ declare namespace JSX {
 
   type Fragment = { _tag: "fragment"; value: string };
 
-  type Node = JSX.Element | string | number | boolean | null | undefined;
+  type Node =
+    | JSX.Element
+    | JSX.Fragment
+    | string
+    | number
+    | boolean
+    | null
+    | undefined;
 
   // Sources:
   // - https://github.com/nicojs/typed-html/tree/88a6a6219bbf4d9368537ee29419d29671573093/src/jsx
@@ -207,6 +214,7 @@ declare namespace JSX {
 
   interface HtmlTag extends VoidHtmlTag {
     children?: Node | Node[];
+    dangerouslySetInnerHTML?: { __html: string };
   }
 
   interface HtmlAnchorTag extends HtmlTag {
@@ -339,29 +347,50 @@ declare namespace JSX {
     alt?: string;
     autocomplete?: string;
     autofocus?: string;
-    checked?: string | boolean;
-    disabled?: string | boolean;
+    checked?: boolean;
+    disabled?: boolean;
     enctype?: string;
     form?: string;
     height?: string;
     list?: string;
-    max?: string;
-    maxlength?: string;
+    max?: number;
+    maxlength?: number;
     method?: string;
-    min?: string;
-    multiple?: string;
+    min?: number;
+    multiple?: boolean;
     name?: string;
-    novalidate?: string | boolean;
     pattern?: string;
     placeholder?: string;
-    readonly?: string;
-    required?: string;
-    size?: string;
+    readonly?: boolean;
+    required?: boolean;
+    size?: number;
     src?: string;
-    step?: string;
+    step?: number;
     target?: string;
-    type?: string;
-    value?: string;
+    type?:
+      | "button"
+      | "checkbox"
+      | "color"
+      | "date"
+      | "datetime-local"
+      | "email"
+      | "file"
+      | "hidden"
+      | "image"
+      | "month"
+      | "number"
+      | "password"
+      | "radio"
+      | "range"
+      | "reset"
+      | "search"
+      | "submit"
+      | "tel"
+      | "text"
+      | "time"
+      | "url"
+      | "week";
+    value?: number | string;
     width?: string;
   }
 
@@ -487,8 +516,8 @@ declare namespace JSX {
     src?: string;
     type?: string;
     charset?: string;
-    async?: string;
-    defer?: string;
+    async?: boolean;
+    defer?: boolean;
     crossorigin?: string;
     integrity?: string;
     text?: string;

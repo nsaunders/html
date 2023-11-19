@@ -136,27 +136,42 @@ export function Fragment({
 
 export function jsx(
   tag: unknown,
-  {
-    children,
-    ...restProps
-  }: {
-    children?: JSX.Node | JSX.Node[];
-  },
-): JSX.Element {
+  props: Record<string, unknown>,
+  ...children: (JSX.Node | JSX.Node[])[]
+): JSX.Element | JSX.Fragment {
+  const flatChildren = children.reduce(
+    (a: JSX.Node[], b: JSX.Node | JSX.Node[]) => a.concat(b),
+    [],
+  );
+  if (tag === jsx) {
+    return { _tag: "fragment", value: renderNodes(flatChildren) };
+  }
   if (typeof tag === "string") {
-    const attributes = renderAttributes(restProps);
+    const attributes = renderAttributes({
+      ...props,
+      dangerouslySetInnerHTML: undefined,
+    });
     return {
       _tag: "element",
       value: isVoid(tag)
         ? `<${tag}${attributes}>`
-        : `<${tag}${attributes}>${renderNodes(children)}</${tag}>`,
+        : `<${tag}${attributes}>${
+            props &&
+            "dangerouslySetInnerHTML" in props &&
+            props["dangerouslySetInnerHTML"] &&
+            typeof props["dangerouslySetInnerHTML"] === "object" &&
+            "__html" in props["dangerouslySetInnerHTML"] &&
+            typeof props["dangerouslySetInnerHTML"]["__html"] === "string"
+              ? props["dangerouslySetInnerHTML"]["__html"]
+              : renderNodes(flatChildren)
+          }</${tag}>`,
     };
   }
   if (typeof tag === "function") {
     const Component = tag as (
       props: /*eslint-disable-line @typescript-eslint/no-explicit-any*/ any,
     ) => JSX.Element;
-    return Component({ children, ...restProps });
+    return Component({ ...props, children });
   }
   return { _tag: "element", value: "" };
 }

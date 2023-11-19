@@ -4,7 +4,16 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "bundler",
-    "noEmit": true
+    "noEmit": true,
+    "jsx": "react",
+    "jsxFactory": "_lib.jsx",
+    "jsxFragmentFactory": "_lib.jsxs"
   },
-  "include": ["global.d.ts", "index.ts", "jsx-runtime.ts"]
+  "include": [
+    "global.d.ts",
+    "global.js",
+    "index.ts",
+    "jsx-runtime.ts",
+    "test.tsx"
+  ]
 }

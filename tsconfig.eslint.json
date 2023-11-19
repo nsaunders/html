@@ -4,10 +4,12 @@
     "noEmit": true
   },
   "include": [
-    ".eslintrc.js",
-    "commitlint.config.js",
+    ".eslintrc.cjs",
+    "commitlint.config.cjs",
     "global.d.ts",
+    "global.js",
     "index.ts",
-    "jsx-runtime.ts"
+    "jsx-runtime.ts",
+    "test.tsx"
   ]
 }

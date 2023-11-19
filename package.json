@@ -1,21 +1,23 @@
 {
   "name": "@nsaunders/html",
   "private": false,
-  "type": "commonjs",
+  "type": "module",
   "version": "0.0.5",
   "description": "Opinionated JSX types and renderer",
   "files": [
     "global.d.ts",
+    "global.js",
     "index.d.ts",
     "jsx-runtime.d.ts",
     "index.js",
     "jsx-runtime.js"
   ],
   "scripts": {
-    "clean": "rimraf index.d.ts jsx-runtime.d.ts index.js jsx-runtime.js",
+    "clean": "rimraf index.d.ts jsx-runtime.d.ts index.js jsx-runtime.js test.d.ts test.js",
     "lint": "eslint",
     "prepublishOnly": "tsc --noEmit false --declaration",
-    "test": "echo \"You should add some tests.\""
+    "test": "tsc --noEmit false --moduleResolution node && node ./test.js",
+    "test-watch": "tsc-watch --noEmit false --moduleResolution node --onSuccess \"node ./test.js\""
   },
   "repository": {
     "type": "git",
@@ -35,12 +37,15 @@
   "homepage": "https://github.com/nsaunders/html",
   "devDependencies": {
     "@tsconfig/strictest": "^2.0.2",
+    "@types/assert": "^1.5.9",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
+    "assert": "^2.1.0",
     "conventional-changelog-cli": "^4.1.0",
     "conventional-github-releaser": "^3.1.5",
     "conventional-recommended-bump": "^9.0.0",
     "rimraf": "^5.0.5",
+    "tsc-watch": "^6.0.4",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
