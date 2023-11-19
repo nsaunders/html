@@ -134,17 +134,17 @@ export function Fragment({
   return { _tag: "fragment", value: renderNodes(children) };
 }
 
+function flattenChildren<T>(children: (T | T[])[]) {
+  return children.reduce((a: T[], b: T | T[]) => a.concat(b), []);
+}
+
 export function jsx(
   tag: unknown,
   props: Record<string, unknown>,
   ...children: (JSX.Node | JSX.Node[])[]
 ): JSX.Element | JSX.Fragment {
-  const flatChildren = children.reduce(
-    (a: JSX.Node[], b: JSX.Node | JSX.Node[]) => a.concat(b),
-    [],
-  );
   if (tag === jsx) {
-    return { _tag: "fragment", value: renderNodes(flatChildren) };
+    return { _tag: "fragment", value: renderNodes(flattenChildren(children)) };
   }
   if (typeof tag === "string") {
     const attributes = renderAttributes({
@@ -163,7 +163,7 @@ export function jsx(
             "__html" in props["dangerouslySetInnerHTML"] &&
             typeof props["dangerouslySetInnerHTML"]["__html"] === "string"
               ? props["dangerouslySetInnerHTML"]["__html"]
-              : renderNodes(flatChildren)
+              : renderNodes(flattenChildren(children))
           }</${tag}>`,
     };
   }
@@ -171,7 +171,10 @@ export function jsx(
     const Component = tag as (
       props: /*eslint-disable-line @typescript-eslint/no-explicit-any*/ any,
     ) => JSX.Element;
-    return Component({ ...props, children });
+    return Component({
+      ...props,
+      children: children.length === 1 ? children[0] : children,
+    });
   }
   return { _tag: "element", value: "" };
 }

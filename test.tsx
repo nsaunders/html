@@ -111,3 +111,30 @@ assert.strictEqual(
   ),
   "<ul><li>Item 1</li><li>Item 2</li></ul>",
 );
+
+// Component with arbitrary children type
+
+function PostListItem({
+  children: post,
+}: {
+  children: { name: string; author: string };
+}) {
+  return (
+    <div>
+      <span>{post.name}</span>
+      <span>{post.author}</span>
+    </div>
+  );
+}
+
+assert.strictEqual(
+  render(
+    <PostListItem>
+      {{
+        name: 'Count lines of code as "lines spent"',
+        author: "Edsger W. Dijkstra",
+      }}
+    </PostListItem>,
+  ),
+  "<div><span>Count lines of code as &quot;lines spent&quot;</span><span>Edsger W. Dijkstra</span></div>",
+);

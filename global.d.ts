@@ -14,6 +14,10 @@ declare namespace JSX {
     | null
     | undefined;
 
+  interface ElementChildrenAttribute {
+    children?: unknown;
+  }
+
   // Sources:
   // - https://github.com/nicojs/typed-html/tree/88a6a6219bbf4d9368537ee29419d29671573093/src/jsx
   // - https://github.com/kitajs/html/blob/16bd27e45ee6a7da62e95b165a4ee430a77f7ac9/jsx.d.ts
