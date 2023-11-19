@@ -55,6 +55,26 @@ function isElement(x: unknown): x is JSX.Element {
   return x._tag === "element";
 }
 
+function isNode(x: unknown): x is JSX.Node {
+  if (isFragment(x) || isElement(x) || x === null || x === undefined) {
+    return true;
+  }
+  switch (typeof x) {
+    case "string":
+      return true;
+    case "number":
+      return true;
+    case "boolean":
+      return true;
+    default:
+      return false;
+  }
+}
+
+function isNodeOrNodes(x: unknown): x is JSX.Node | JSX.Node[] {
+  return isNode(x) || (x instanceof Array && !x.some(xx => !isNode(xx)));
+}
+
 function renderNode(node: JSX.Node) {
   if (node === null || node === undefined) {
     return "";
@@ -134,21 +154,20 @@ export function Fragment({
   return { _tag: "fragment", value: renderNodes(children) };
 }
 
-function flattenChildren<T>(children: (T | T[])[]) {
-  return children.reduce((a: T[], b: T | T[]) => a.concat(b), []);
-}
-
 export function jsx(
   tag: unknown,
   props: Record<string, unknown>,
-  ...children: (JSX.Node | JSX.Node[])[]
 ): JSX.Element | JSX.Fragment {
   if (tag === jsx) {
-    return { _tag: "fragment", value: renderNodes(flattenChildren(children)) };
+    if (props && "children" in props && isNodeOrNodes(props["children"])) {
+      return { _tag: "fragment", value: renderNodes(props["children"] || []) };
+    }
+    return { _tag: "fragment", value: "" };
   }
   if (typeof tag === "string") {
     const attributes = renderAttributes({
       ...props,
+      children: undefined,
       dangerouslySetInnerHTML: undefined,
     });
     return {
@@ -163,7 +182,13 @@ export function jsx(
             "__html" in props["dangerouslySetInnerHTML"] &&
             typeof props["dangerouslySetInnerHTML"]["__html"] === "string"
               ? props["dangerouslySetInnerHTML"]["__html"]
-              : renderNodes(flattenChildren(children))
+              : renderNodes(
+                  props &&
+                    "children" in props &&
+                    isNodeOrNodes(props["children"])
+                    ? props["children"]
+                    : [],
+                )
           }</${tag}>`,
     };
   }
@@ -171,10 +196,7 @@ export function jsx(
     const Component = tag as (
       props: /*eslint-disable-line @typescript-eslint/no-explicit-any*/ any,
     ) => JSX.Element;
-    return Component({
-      ...props,
-      children: children.length === 1 ? children[0] : children,
-    });
+    return Component(props);
   }
   return { _tag: "element", value: "" };
 }

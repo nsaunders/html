@@ -1,4 +1,3 @@
-import * as _lib from "./jsx-runtime.js";
 import assert from "assert";
 import { render } from "./index.js";
 
@@ -138,3 +137,14 @@ assert.strictEqual(
   ),
   "<div><span>Count lines of code as &quot;lines spent&quot;</span><span>Edsger W. Dijkstra</span></div>",
 );
+
+assert.strictEqual(
+  render(
+    <a>
+      <b>testing</b>
+    </a>,
+  ),
+  "<a><b>testing</b></a>",
+);
+
+console.info("All tests passed.");
