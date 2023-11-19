@@ -213,7 +213,7 @@ declare namespace JSX {
     draggable?: string | boolean;
     spellcheck?: string | boolean;
     style?: CSS.Properties;
-    tabindex?: string;
+    tabindex?: number;
     title?: string;
     translate?: string | boolean;
   }
@@ -540,7 +540,7 @@ declare namespace JSX {
     multiple?: boolean;
     name?: string;
     required?: boolean;
-    size?: string;
+    size?: number;
   }
 
   interface HtmlSourceTag extends VoidHtmlTag {
@@ -566,17 +566,17 @@ declare namespace JSX {
 
   interface HtmlTextAreaTag extends HtmlTag {
     autofocus?: boolean;
-    cols?: string;
+    cols?: number;
     dirname?: string;
     disabled?: boolean;
     form?: string;
-    maxlength?: string;
-    minlength?: string;
+    maxlength?: number;
+    minlength?: number;
     name?: string;
     placeholder?: string;
     readonly?: boolean;
     required?: boolean;
-    rows?: string;
+    rows?: number;
     wrap?: string;
   }
 
