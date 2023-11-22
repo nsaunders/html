@@ -440,6 +440,7 @@ declare namespace JSX {
 
   interface HtmlMetaTag extends VoidHtmlTag {
     name?: string;
+    property?: string;
     httpEquiv?: string;
     content?: string;
     charset?: string;
