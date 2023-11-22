@@ -216,6 +216,26 @@ declare namespace JSX {
     tabindex?: number;
     title?: string;
     translate?: string | boolean;
+    oncontextmenu?: string;
+    onkeydown?: string;
+    onkeypress?: string;
+    onkeyup?: string;
+    onclick?: string;
+    ondblclick?: string;
+    ondrag?: string;
+    ondragend?: string;
+    ondragenter?: string;
+    ondragleave?: string;
+    ondragover?: string;
+    ondragstart?: string;
+    ondrop?: string;
+    onmousedown?: string;
+    onmousemove?: string;
+    onmouseout?: string;
+    onmouseover?: string;
+    onmouseup?: string;
+    onmousewheel?: string;
+    onscroll?: string;
   }
 
   interface HtmlTag extends VoidHtmlTag {
@@ -247,7 +267,7 @@ declare namespace JSX {
     type?: string;
   }
 
-  interface HtmlAudioTag extends HtmlTag {
+  interface HtmlAudioTag extends HtmlTag, MediaEvents {
     src?: string;
     autobuffer?: string;
     autoplay?: string;
@@ -264,7 +284,27 @@ declare namespace JSX {
     cite?: string;
   }
 
-  interface HtmlBodyTag extends HtmlTag {}
+  interface HtmlBodyTag extends HtmlTag {
+    onafterprint?: string;
+    onbeforeprint?: string;
+    onbeforeonload?: string;
+    onblur?: string;
+    onerror?: string;
+    onfocus?: string;
+    onhaschange?: string;
+    onload?: string;
+    onmessage?: string;
+    onoffline?: string;
+    ononline?: string;
+    onpagehide?: string;
+    onpageshow?: string;
+    onpopstate?: string;
+    onredo?: string;
+    onresize?: string;
+    onstorage?: string;
+    onundo?: string;
+    onunload?: string;
+  }
 
   interface HtmlButtonTag extends HtmlTag {
     action?: string;
@@ -299,20 +339,20 @@ declare namespace JSX {
     value?: string;
   }
 
-  interface HtmlEmbedTag extends VoidHtmlTag {
+  interface HtmlEmbedTag extends VoidHtmlTag, MediaEvents {
     src?: string;
     type?: string;
     width?: string;
     height?: string;
   }
 
-  interface HtmlFieldSetTag extends HtmlTag {
+  interface HtmlFieldSetTag extends HtmlTag, FormEvents {
     disabled?: boolean;
     form?: string;
     name?: string;
   }
 
-  interface HtmlFormTag extends HtmlTag {
+  interface HtmlFormTag extends HtmlTag, FormEvents {
     acceptCharset?: string;
     action?: string;
     autocomplete?: string;
@@ -337,7 +377,7 @@ declare namespace JSX {
     height?: string;
   }
 
-  interface HtmlImageTag extends VoidHtmlTag {
+  interface HtmlImageTag extends VoidHtmlTag, MediaEvents {
     alt?: string;
     src?: string;
     crossorigin?: string;
@@ -347,7 +387,7 @@ declare namespace JSX {
     height?: string;
   }
 
-  interface HtmlInputTag extends VoidHtmlTag {
+  interface HtmlInputTag extends VoidHtmlTag, FormEvents {
     accept?: string;
     action?: string;
     alt?: string;
@@ -455,7 +495,7 @@ declare namespace JSX {
     optimum?: string | number;
   }
 
-  interface HtmlObjectTag extends HtmlTag {
+  interface HtmlObjectTag extends HtmlTag, MediaEvents {
     data?: string;
     type?: string;
     name?: string;
@@ -600,7 +640,7 @@ declare namespace JSX {
     srclang?: string;
   }
 
-  interface HtmlVideoTag extends HtmlTag {
+  interface HtmlVideoTag extends HtmlTag, MediaEvents {
     src?: string;
     poster?: string;
     autobuffer?: string;
@@ -614,6 +654,44 @@ declare namespace JSX {
   // We allow any attributes on svg because its hard to keep track of them all.
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   interface HtmlSvgTag extends HtmlTag, Record<string, any> {}
+
+  interface FormEvents {
+    onblur?: string;
+    onchange?: string;
+    onfocus?: string;
+    onformchange?: string;
+    onforminput?: string;
+    oninput?: string;
+    oninvalid?: string;
+    onselect?: string;
+    onsubmit?: string;
+  }
+
+  interface MediaEvents {
+    onabort?: string;
+    oncanplay?: string;
+    oncanplaythrough?: string;
+    ondurationchange?: string;
+    onemptied?: string;
+    onended?: string;
+    onerror?: string;
+    onloadeddata?: string;
+    onloadedmetadata?: string;
+    onloadstart?: string;
+    onpause?: string;
+    onplay?: string;
+    onplaying?: string;
+    onprogress?: string;
+    onratechange?: string;
+    onreadystatechange?: string;
+    onseeked?: string;
+    onseeking?: string;
+    onstalled?: string;
+    onsuspend?: string;
+    ontimeupdate?: string;
+    onvolumechange?: string;
+    onwaiting?: string;
+  }
 }
 
 declare namespace Htmx {
