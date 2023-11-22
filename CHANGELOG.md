@@ -1,3 +1,10 @@
+## [0.2.0](https://github.com/nsaunders/html/compare/v0.1.3...v0.2.0) (2023-11-22)
+
+
+### Features
+
+* support for property attribute on meta element ([2217053](https://github.com/nsaunders/html/commit/2217053d2d118bfdbb34c3e259f04df6ee81230b))
+
 ## [0.1.3](https://github.com/nsaunders/html/compare/v0.1.2...v0.1.3) (2023-11-19)
 
 
