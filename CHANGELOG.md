@@ -1,3 +1,10 @@
+## [0.3.0](https://github.com/nsaunders/html/compare/v0.2.0...v0.3.0) (2023-11-23)
+
+
+### Features
+
+* event attributes ([c09c27c](https://github.com/nsaunders/html/commit/c09c27cd12f093ec6388ac1ee29e9e03806086d7))
+
 ## [0.2.0](https://github.com/nsaunders/html/compare/v0.1.3...v0.2.0) (2023-11-22)
 
 
